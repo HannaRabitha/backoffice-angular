@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+}
+
+table {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+
+.container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
