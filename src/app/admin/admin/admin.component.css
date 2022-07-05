@@ -13,3 +13,11 @@ table {
     margin-left: auto;
     margin-right: auto;
 }
+
+
+.flex-btn {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  flex-wrap: wrap;
+}

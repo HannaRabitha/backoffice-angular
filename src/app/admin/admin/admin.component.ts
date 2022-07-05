@@ -4,17 +4,21 @@ import employeeData from '../../data/employee.json';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AddDialogComponent } from 'src/app/add-dialog/add-dialog.component';
+import { ApiService } from 'src/app/services/api.service';
+import { MatSort } from '@angular/material/sort';
 
 
-interface Employee {
-  id: number;
-  username: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-}
+// interface Employee {
+//   id: number;
+//   username: string;
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+// }
 
-const ELEMENT_DATA: Employee[] = employeeData;
+// const ELEMENT_DATA: Employee[] = employeeData;
 
 
 @Component({
@@ -24,19 +28,44 @@ const ELEMENT_DATA: Employee[] = employeeData;
 })
 
 export class AdminComponent implements AfterViewInit {
+  dataSource!: MatTableDataSource<any>;
   displayedColumns: string[] = ['id', 'username', 'firstName', 'lastName', 'email', 'action'];
-  dataSource = new MatTableDataSource<Employee>(ELEMENT_DATA);
+  // dataSource = new MatTableDataSource<Employee>(ELEMENT_DATA);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(public dialog: MatDialog, private api : ApiService) { }
+  
+  openAddDialog() {
+    this.dialog.open(AddDialogComponent, {
+      width:'30%'
+      // data: {
+      //   animal: 'panda',
+      // },
+    });
+  }
+
+  getAllEmployee() {
+    this.api.getEmpolyee().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }, error: (err) => {
+        console.log("error while fetching data");
+      }
+    })
+
+  }
+  
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    this.getAllEmployee()
   }
 
-  addData() {
-    console.log("Tambah Data");
-    
-  }
 }
 
 

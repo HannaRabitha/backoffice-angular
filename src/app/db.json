@@ -1,0 +1,54 @@
+{
+  "employeeList": [
+    {
+      "id": 43,
+      "username": "Hanna",
+      "firstName": "Rabitha",
+      "lastName": "Hasni",
+      "gender": "Female",
+      "email": "dajdkajd@gmail.com"
+    },
+    {
+      "id": 87,
+      "username": "dadad",
+      "firstName": "dada",
+      "lastName": "dada",
+      "gender": "Female",
+      "email": "dadada"
+    },
+    {
+      "id": "1bda",
+      "username": "dada",
+      "firstName": "dasda",
+      "lastName": "dfasfa",
+      "gender": "Male",
+      "email": "ararda"
+    },
+    {
+      "id": "fb55",
+      "username": "dad",
+      "firstName": "dada",
+      "lastName": "dada",
+      "gender": "Female",
+      "email": "dadada"
+    },
+    {
+      "id": "efbd",
+      "username": "kjsakldja",
+      "firstName": "kjdakljdkla",
+      "lastName": "kdjakjdk",
+      "gender": "Female",
+      "email": "djlakjda"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
